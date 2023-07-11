@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+
+    mywebsql:
+        image: xaviblanes/mywebsql
+        container_name: mywebsql
+        ports:
+            - "8200:80"
+        restart: unless-stopped
+        stdin_open: true   # equivalent of -i
+        tty: true          # equivalent of -t
+        command: >
+            /bin/sh -c "service apache2 start && \
+               service mysql start && \
+               bash"
+
+               
